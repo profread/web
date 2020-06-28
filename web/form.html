@@ -1,4 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- TODO finish adding correct field names
+	TODO add additional social media username fields to erd
+-->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -23,9 +26,9 @@
 			<ul >
 			
 					<li id="li_31" >	
-		<label class="description" for="element_31">Title </label>
+		<label class="description" for="title">Title </label>
 		<div>
-		<select class="element select medium" id="element_31" name="element_31"> 
+		<select class="element select medium" id="title" name="title"> 
 			<option value="1" selected="selected"></option>
 <option value="2" >M</option>
 <option value="3" >Mx</option>
@@ -44,43 +47,43 @@
 		</select>
 		</div><p class="guidelines" id="guide_31"><small>If we have missed your title, sorry! Please let us know so that we can add it to the list.</small></p> 
 		</li>		<li id="li_1" >
-		<label class="description" for="element_1">Full Name *</label>
+		<label class="description" for="fullname">Full Name *</label>
 		This is the one shown on an ID document, such as a birth certificate or passport.<br />
 		<div>
-			<input id="element_1" name="element_1" class="element text medium" type="text" required maxlength="255" value=""/> 
+			<input id="fullname" name="fullname" class="element text medium" type="text" required maxlength="255" value=""/> 
 		</div>
 		</li>		<li id="li_2" >
-		<label class="description" for="element_2">Preferred Name </label>
+		<label class="description" for="preferredname">Preferred Name </label>
 		What name do your friends call you?<br />
 		<div>
-			<input id="element_2" name="element_2" class="element text medium" type="text" maxlength="255" value=""/> 
+			<input id="preferredname" name="preferredname" class="element text medium" type="text" maxlength="255" value=""/> 
 		</div> 
 		</li>	
 <li id="li_39" >
-		<label class="description" for="element_39">Face Photo *</label>
-		Please share a clear photo of your face for your GZ/ID<br />
+		<label class="description" for="photograph">Face Photo *</label>
+		Please share a clear photo of your face for your GZ/ID. Please remove hats and other face coverings, but feel free to smile!<br />
 		<div>
-			<input required id="element_39" name="element_39" class="element file" type="file" accept="image/*"/> 
+			<input required id="photograph" name="photograph" class="element file" type="file" accept="image/*"/> 
 		</div>  
 		</li>
 
 
 		<li id="li_3" >
-		<label class="description" for="element_3">Email *</label>
+		<label class="description" for="email">Email *</label>
 		
 		<div>
-			<input id="element_3" name="element_3" class="element text medium" type="email" required maxlength="255" value=""/> 
+			<input id="email" name="email" class="element text medium" type="email" required maxlength="255" value=""/> 
 		</div> 
 		</li>		<li id="li_4" >
-		<label class="description" for="element_4">Telephone number *</label>
+		<label class="description" for="telephone">Telephone number *</label>
 		Please write your telephone number in the international format. For example, a UK mobile number would be written 447778987654<br />
 		<div>
-			<input id="element_4" name="element_4" class="element text medium" type="text" required maxlength="255" value=""/> 
+			<input id="telephone" name="telephone" class="element text medium" type="text" required maxlength="255" value=""/> 
 		</div>
 		</li>		<li id="li_32" >
-		<label class="description" for="element_32">Year of Birth *</label>
+		<label class="description" for="birth_year">Year of Birth *</label>
 		<div>
-		<select required class="element select medium" id="element_32" name="element_32"> 
+		<select required class="element select medium" id="birth_year" name="birth_year"> 
 			<option value="" selected="selected"></option>
 <option value="1" >2020</option>
 <option value="2" >NOW - 100</option>
@@ -88,9 +91,9 @@
 		</select>
 		</div> 
 		</li>		<li id="li_33" >
-		<label class="description" for="element_33">Month of Birth *</label>
+		<label class="description" for="birth_month">Month of Birth *</label>
 		<div>
-		<select required class="element select medium" id="element_33" name="element_33"> 
+		<select required class="element select medium" id="birth_month" name="birth_month"> 
 			<option value="" selected="selected"></option>
 			
 <option value="1">January</option>
@@ -110,9 +113,9 @@
 		</select>
 		</div> 
 		</li>		<li id="li_34" >
-		<label class="description" for="element_34">Day of Birth *</label>
+		<label class="description" for="birth_month">Day of Birth *</label>
 		<div>
-		<select required class="element select medium" id="element_34" name="element_34"> 
+		<select required class="element select medium" id="birth_month" name="birth_month"> 
 			<option value="" selected="selected"></option>
 
 <option value="1">1</option>
@@ -151,49 +154,49 @@
 		</select>
 		</div> 
 		</li>
-		<li id="li_5" class="section_break"><h2>Everybody knows, his bright red van...</h2><p>Please ensure that all the fields needed to send letters to you are completed accurately.</p><p></p></li>
+		<li id="li_5" class="section_break"><h2>Postal Address</h2><p>Please ensure that all the fields needed to post physical letters to you are completed accurately.</p><p></p></li>
 		
 
 
 
 		<li id="li_5" >
-		<label class="description" for="element_5">Postal Address Line 1 *</label>
+		<label class="description" for="line_1">Line 1 *</label>
 		
 		<div>
-			<input required id="element_5" name="element_5" class="element text medium" type="text" maxlength="255" value=""/> 
+			<input required id="line_1" name="line_1" class="element text medium" type="text" maxlength="255" value=""/> 
 		</div> 
 		</li>
 		
 		
 		
 				<li id="li_9" >
-		<label class="description" for="element_9">Postal Address Line 2 </label>
+		<label class="description" for="line_2">Postal Address Line 2 </label>
 		
 		<div>
-			<input id="element_9" name="element_9" class="element text medium" type="text" maxlength="255" value=""/> 
+			<input id="line_2" name="line_2" class="element text medium" type="text" maxlength="255" value=""/> 
 		</div> 
 		</li>
 
 
 		<li id="li_8" >
-		<label class="description" for="element_8">Postal Address Line 3 </label>
+		<label class="description" for="line_3">Postal Address Line 3 </label>
 		<div>
-			<input id="element_8" name="element_8" class="element text medium" type="text" maxlength="255" value=""/> 
+			<input id="line_3" name="line_3" class="element text medium" type="text" maxlength="255" value=""/> 
 		</div> 
 		</li>		<li id="li_7" >
-		<label class="description" for="element_7">Postal Address Line 4 </label>
+		<label class="description" for="line_4">Postal Address Line 4 </label>
 		<div>
-			<input id="element_7" name="element_7" class="element text medium" type="text" maxlength="255" value=""/> 
+			<input id="line_4" name="line_4" class="element text medium" type="text" maxlength="255" value=""/> 
 		</div> 
 		</li>		<li id="li_6" >
-		<label class="description" for="element_6">Postal Address Line 5 </label>
+		<label class="description" for="line_5">Postal Address Line 5 </label>
 		<div>
-			<input id="element_6" name="element_6" class="element text medium" type="text" maxlength="255" value=""/> 
+			<input id="line_5" name="line_5" class="element text medium" type="text" maxlength="255" value=""/> 
 		</div> 
 		</li>		<li id="li_10" >
-		<label class="description" for="element_10">Postal Address Postcode or ZIP code </label>
+		<label class="description" for="postcode">Postal Address Postcode or ZIP code </label>
 		<div>
-			<input id="element_10" name="element_10" class="element text medium" type="text" maxlength="255" value=""/> 
+			<input id="postcode" name="postcode" class="element text medium" type="text" maxlength="255" value=""/> 
 		</div> 
 		
 		</li>	<li id="country" >
@@ -241,37 +244,37 @@
 			<input id="element_30" name="element_30" class="element text medium" type="text" maxlength="255" value=""/> 
 		</div> 
 		</li>		<li id="li_13" >
-		<label class="description" for="element_13">Minecraft Java Edition</label>
+		<label class="description" for="minecraft_username">Minecraft Java Edition</label>
 		<div>
-			<input id="element_13" name="element_13" class="element text medium" type="text" maxlength="255" value=""/> 
+			<input id="minecraft_username" name="minecraft_username" class="element text medium" type="text" maxlength="255" value=""/> 
 		</div> 
 		</li>		<li id="li_16" >
-		<label class="description" for="element_16">Github </label>
+		<label class="description" for="github_username">Github </label>
 		<div>
-			<input id="element_16" name="element_16" class="element text medium" type="text" maxlength="255" value=""/> 
+			<input id="github_username" name="github_username" class="element text medium" type="text" maxlength="255" value=""/> 
 		</div> 
 		</li>		<li class="section_break">
 			<h2>Who ya gunna call?</h2>
 			<p>Please let us know who your main emergency contact is. You can add more later.</p>
 		</li>		<li id="li_18" >
-		<label class="description" for="element_18">Full Name </label>
+		<label class="description" for="emergency_fullname">Full Name </label>
 		<div>
-			<input id="element_18" name="element_18" class="element text medium" type="text" maxlength="255" value=""/> 
+			<input id="emergency_fullname" name="emergency_fullname" class="element text medium" type="text" maxlength="255" value=""/> 
 		</div> 
 		</li>		<li id="li_19" >
-		<label class="description" for="element_19">Preferred Name </label>
+		<label class="description" for="emergency_preferredname">Preferred Name </label>
 		<div>
-			<input id="element_19" name="element_19" class="element text medium" type="text" maxlength="255" value=""/> 
+			<input id="emergency_preferredname" name="emergency_preferredname" class="element text medium" type="text" maxlength="255" value=""/> 
 		</div> 
 		</li>		<li id="li_20" >
-		<label class="description" for="element_20">Telephone number </label>
+		<label class="description" for="emergency_telphone">Telephone number </label>
 		<div>
-			<input id="element_20" name="element_20" class="element text medium" type="text" maxlength="255" value=""/> 
+			<input id="emergency_telphone" name="emergency_telphone" class="element text medium" type="text" maxlength="255" value=""/> 
 		</div><p class="guidelines" id="guide_20"><small>As above, in international format.</small></p> 
 		</li>		<li id="li_21" >
-		<label class="description" for="element_21">Relationship </label>
+		<label class="description" for="emergency_relationship">Relationship </label>
 		<div>
-			<input id="element_21" name="element_21" class="element text medium" type="text" maxlength="255" value=""/> 
+			<input id="emergency_relationship" name="emergency_relationship" class="element text medium" type="text" maxlength="255" value=""/> 
 		</div><p class="guidelines" id="guide_21"><small>What relation is this person to you?</small></p> 
 		</li>		<li class="section_break">
 			<h2>Your Membership</h2>
@@ -359,17 +362,17 @@ I will notify Geek.Zone if I:<br />
 // no longer pay sufficient tax on my income and/or capital gains<br />
 
 		<span>
-			<input checked id="element_37_1" name="element_37" class="element radio" type="checkbox" value="1" />
-<label class="choice" for="element_37_1">Gift Aid my Donations</label>
+			<input checked id="giftaid" name="giftaid" class="element radio" type="checkbox" value="1" />
+<label class="choice" for="giftaid">Gift Aid my Donations</label>
 </span>
 <span>
 </li>
 <li id="image" >
-<label class="description" for="checkbox_giftaid">My Image</label>
+<label class="description" for="gdpr_photo">My Image</label>
 I am happy for Geek.Zone to share photographs, audio and video, media, of me on the Geek.Zone website, social media channels and other promotional publications under the <a href="https://creativecommons.org/share-your-work/public-domain/cc0/" target="_blank">CC0 license</a>.<br />
 
-<input id="checkbox_image" name="checkbox_image" class="element radio" type="checkbox" value="2" />
-<label class="choice" for="checkbox_image">Take Photos, Audio & Video of me</label>
+<input id="gdpr_photo" name="gdpr_photo" class="element radio" type="checkbox" value="2" />
+<label class="choice" for="gdpr_photo">Take Photos, Audio & Video of me</label>
 </span>
 </li>
 
@@ -382,15 +385,15 @@ I am happy for Geek.Zone to share photographs, audio and video, media, of me on 
 <label class="description" for="checkbox_updates">Updates</label>
 News about Geek.Zone events, developments and everything else Geek.Zone!<br />
 
-<input id="element_37_3" name="element_37" class="element radio" type="checkbox" value="3" />
-<label class="choice" for="checkbox_updates_sms">Send me SMS Updates</label>
+<input id="gdpr_sms_update" name="gdpr_sms_update" class="element radio" type="checkbox" value="0" />
+<label class="choice" for="gdpr_sms_update">Send me SMS Updates</label>
 
-<input id="element_37_7" name="element_37" class="element radio" type="checkbox" value="7" />
-<label class="choice" for="checkbox_updates_phone">Send me Telephone Updates</label>
-<input id="element_37_5" name="element_37" class="element radio" type="checkbox" value="5" />
-<label class="choice" for="checkbox_updates_email">Send me Email Updates</label>
+<input id="gdpr_telephone_update" name="gdpr_telephone_update" class="element radio" type="checkbox" value="0" />
+<label class="choice" for="gdpr_telephone_update">Send me Telephone Updates</label>
+<input id="gdpr_email_update" name="gdpr_email_update" class="element radio" type="checkbox" value="0" />
+<label class="choice" for="gdpr_email_update">Send me Email Updates</label>
 
-<input id="element_37_9" name="element_37" class="element radio" type="checkbox" value="9" />
+<input id="checkbox_updates_post" name="checkbox_updates_post" class="element radio" type="checkbox" value="0" />
 <label class="choice" for="checkbox_updates_post">Send me Postal Updates</label>
 </span>
 </li>
@@ -399,22 +402,24 @@ News about Geek.Zone events, developments and everything else Geek.Zone!<br />
 
 
 
-<li id="updates" >
+<li id="alerts" >
 <span>
-<label class="description" for="checkbox_notifications">Notifications</label>
+<label class="description" for="checkbox_notifications">Alerts</label>
 Important information relating to system or Constitutional matters necessary to being part of the Geek.Zone community.
 <br />
 
-<input id="element_37_3" name="element_37" class="element radio" type="checkbox" value="3" />
-<label class="choice" for="checkbox_notifications_sms">Send me SMS Notifications</label>
+<input id="gdpr_sms_alert" name="gdpr_sms_alert" class="element radio" type="checkbox" value="0" />
+<label class="choice" for="gdpr_sms_alert">Send me SMS Alerts</label>
 
-<input id="element_37_7" name="element_37" class="element radio" type="checkbox" value="7" />
-<label class="choice" for="checkbox_notifications_phone">Send me Telephone Notifications</label>
-<input required id="element_37_5" name="element_37" class="element radio" type="checkbox" value="5" />
-<label class="choice" for="checkbox_notifications_email">Send me Email Notifications *</label>
+<input id="gdpr_telephone_alert" name="gdpr_telephone_alert" class="element radio" type="checkbox" value="0" />
+<label class="choice" for="gdpr_telephone_alert">Send me Telephone Alerts</label>
 
-<input required id="element_37_9" name="element_37" class="element radio" type="checkbox" value="9" />
-<label class="choice" for="checkbox_notifications_post">Send me Postal Notifications * </label>
+
+<input required id="gdpr_email_alert" name="gdpr_email_alert" class="element radio" type="checkbox" value="0" />
+<label class="choice" for="gdpr_email_alert">Send me Email Alerts *</label>
+
+<input required id="gdpr_postal_alert" name="gdpr_postal_alert" class="element radio" type="checkbox" value="0" />
+<label class="choice" for="gdpr_postal_alert">Send me Postal Alerts * </label>
 </span>
 </li>
 
@@ -425,10 +430,10 @@ Important information relating to system or Constitutional matters necessary to 
 			<h2>Constitution</h2>
 			<p></p>
 		</li>		<li id="li_38" >
-		<label class="description" for="element_38">I have read and agree to abide by the Geek.Zone/Constitution</label>
+		<label class="description" for="constitution">I have read and agree to abide by the Geek.Zone/Constitution</label>
 		<span>
-			<input required id="element_38_1" name="element_38" class="element radio" type="checkbox" value="1" />
-<label required class="choice" for="element_38_1">I agree *</label>
+			<input required id="constitution" name="constitution" class="element radio" type="checkbox" value="1" />
+<label required class="choice" for="constitution">I agree *</label>
 
 		</span> 
 		</li>
