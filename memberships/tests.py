@@ -17,6 +17,9 @@ class RegisterFormTestCase(TransactionTestCase):
         self.assertFormError(
             response, "form", "constitution_agreed", "This field is required."
         )
+        self.assertFormError(
+            response, "form", "donation_amount", "This field is required."
+        )
 
     def test_preferred_name_defaults_to_full_name(self):
         self.client.post(
@@ -27,6 +30,7 @@ class RegisterFormTestCase(TransactionTestCase):
                 "password": "test",
                 "birth_date": "1991-01-01",
                 "constitution_agreed": "on",
+                "donation_amount": 10,
             },
         )
         member = Member.objects.get(email="test@example.com")
@@ -42,6 +46,7 @@ class RegisterFormTestCase(TransactionTestCase):
                 "password": "test",
                 "birth_date": "1991-01-01",
                 "constitution_agreed": "on",
+                "donation_amount": 10,
             },
         )
         member = Member.objects.get(email="test@example.com")
@@ -57,6 +62,7 @@ class RegisterFormTestCase(TransactionTestCase):
                 "password": "test",
                 "birth_date": "1991-01-01",
                 "constitution_agreed": "on",
+                "donation_amount": 10,
             },
         )
         user = User.objects.filter(username="test@example.com")

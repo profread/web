@@ -11,6 +11,7 @@ class Member(models.Model):
     birth_date = models.DateField()
     constitution_agreed = models.BooleanField()
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    stripe_customer_id = models.CharField(max_length=255)
 
     class Meta:
         verbose_name = "member"
@@ -18,9 +19,18 @@ class Member(models.Model):
 
     @staticmethod
     def create(
-        full_name, preferred_name, email, password, birth_date, constitution_agreed
+        full_name,
+        preferred_name,
+        email,
+        password,
+        birth_date,
+        constitution_agreed,
+        stripe_customer_id,
     ):
         with transaction.atomic():
+            # todo(cn): This is probably not a secure way to create users.
+            #           We should probably make sure that the password is long
+            #           enough.
             user = User.objects.create_user(username=email, password=password)
             member = Member(
                 full_name=full_name,
@@ -29,6 +39,7 @@ class Member(models.Model):
                 constitution_agreed=constitution_agreed,
                 email=email,
                 user=user,
+                stripe_customer_id=stripe_customer_id,
             )
             member.save()
         return member

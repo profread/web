@@ -1,0 +1,23 @@
+<script src="https://js.stripe.com/v3/"></script>
+
+<h1>Setup your Geek.Zone donation</h1>
+
+<h2> You are donating £{{donation}}</h2>
+<p>Your yearly cost will be £{{total}}</p>
+
+<button id="checkout-button">Setup your Direct Debit</button>
+
+<script>
+    const stripe = Stripe('pk_test_51H10VbJh8KDe9GPFDGNmzIaTucxVDOKrYzc5D4zYCc4jBwv5xvnqmy5bo5idDj7hvTUcz4F3hmVTZjAWIGGjCtTU007JH64zdv');
+
+    const checkoutButton = document.getElementById('checkout-button');
+    checkoutButton.addEventListener('click', () => {
+        const price = document.getElementById('donation');
+
+        stripe.redirectToCheckout({
+            sessionId: '{{session.id}}'
+        }).then(result => {
+            console.log('error with stripe redirect', {error})
+        });
+    });
+</script>
