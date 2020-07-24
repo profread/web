@@ -2,13 +2,14 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import authenticate, login
+from django.conf import settings
 import stripe
 import datetime
 
 from .forms import RegistrationForm
 from .models import Member, Membership
 
-stripe.api_key = "sk_test_51H10VbJh8KDe9GPFIV2e5f3H7wq21bzdvCB12CznS92vbOavET4ALTsQgNgP0Meb9VSMDuhPc1DhEu4pRw9bs0Sd00iujiazxX"
+stripe.api_key = settings.STRIPE_SECRET_KEY
 sand_price_id = "price_1H1ekvJh8KDe9GPF5hhB57QK"
 sand_product_id = "prod_HaqRM6XnWLZ6Zi"
 
@@ -91,6 +92,7 @@ def payment_setup(request):
             "user": request.user,
             "donation": donation,
             "total": int(donation) + 1,
+            "stripe_public_key": settings.STRIPE_PUBLIC_KEY,
         },
     )
 

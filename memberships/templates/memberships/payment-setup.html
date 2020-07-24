@@ -12,7 +12,7 @@
 <button id="checkout-button">Setup your Direct Debit</button>
 
 <script>
-    const stripe = Stripe('pk_test_51H10VbJh8KDe9GPFDGNmzIaTucxVDOKrYzc5D4zYCc4jBwv5xvnqmy5bo5idDj7hvTUcz4F3hmVTZjAWIGGjCtTU007JH64zdv');
+    const stripe = Stripe('{{stripe_public_key}}');
 
     const checkoutButton = document.getElementById('checkout-button');
     checkoutButton.addEventListener('click', () => {
