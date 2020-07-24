@@ -12,8 +12,6 @@ sand_price_id = "price_1H1ekvJh8KDe9GPF5hhB57QK"
 sand_product_id = "prod_HaqRM6XnWLZ6Zi"
 
 
-# note(cn): You should _not_ be able to access this
-#           if you are already logged in.
 def register(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect(reverse("portal"))
@@ -98,7 +96,6 @@ def payment_success(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("register"))
 
-    # todo(cn): handle no donation and session param
     donation = request.GET.get("donation", False)
     session_id = request.GET["session_id"]
 
