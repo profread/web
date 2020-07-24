@@ -70,15 +70,17 @@ def payment_setup(request):
     success_url = "{}?session_id={{CHECKOUT_SESSION_ID}}".format(
         request.build_absolute_uri(reverse("payment-success"))
     )
+    cancel_url = request.build_absolute_uri(reverse("payment-cancel"))
     if donation:
         success_url = success_url + "&donation={}".format(donation)
+        cancel_url = cancel_url + "?donation={}".format(donation)
 
     session = stripe.checkout.Session.create(
         payment_method_types=["bacs_debit"],
         mode="setup",
         customer=request.user.member.stripe_customer_id,
         success_url=success_url,
-        cancel_url=request.build_absolute_uri(reverse("payment-cancel")),
+        cancel_url=cancel_url,
     )
 
     return render(
@@ -128,8 +130,13 @@ def payment_success(request):
     return HttpResponseRedirect(reverse("portal"))
 
 
+# todo(cn): stop users with an active subscription
+#           from doing anything with this endpoint.
 def payment_cancel(request):
-    pass
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("register"))
+    donation = request.GET.get("donation", False)
+    return render(request, "memberships/payment-cancel.html", {"donation": donation})
 
 
 def portal(request):

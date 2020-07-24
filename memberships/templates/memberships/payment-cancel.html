@@ -1,0 +1,7 @@
+{% if donation %}
+<a href="{% url 'payment-setup'%}?donation={{donation}}">Go back to payment setup with a £{{donation}} donation</a>
+<p>an option here to change the donation amount or proceed with no donation</p>
+{% else %}
+<a href="{% url 'payment-setup'%}">Go back to payment setup with no donation</a>
+<p>an option here to add a donation</p>
+{% endif %}
