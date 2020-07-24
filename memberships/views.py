@@ -12,7 +12,7 @@ sand_price_id = "price_1H1ekvJh8KDe9GPF5hhB57QK"
 sand_product_id = "prod_HaqRM6XnWLZ6Zi"
 
 
-# note(cn): You should be able to access this
+# note(cn): You should _not_ be able to access this
 #           if you are already logged in.
 def register(request):
     if not request.method == "POST":
@@ -51,6 +51,8 @@ def register(request):
 
     login(request, user)
 
+    if form.cleaned_data["donation_amount"] is None:
+        return HttpResponseRedirect(reverse("payment-setup"))
     return HttpResponseRedirect(
         "{}?donation={}".format(
             reverse("payment-setup"), form.cleaned_data["donation_amount"]
@@ -62,17 +64,18 @@ def payment_setup(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("register"))
 
-    # todo(cn): handle no donation param
-    donation = int(request.GET["donation"])
+    donation = request.GET.get("donation", False)
+    success_url = "{}?session_id={{CHECKOUT_SESSION_ID}}".format(
+        request.build_absolute_uri(reverse("payment-success"))
+    )
+    if donation:
+        success_url = success_url + "&donation={}".format(donation)
 
-    member = request.user.member
     session = stripe.checkout.Session.create(
         payment_method_types=["bacs_debit"],
         mode="setup",
-        customer=member.stripe_customer_id,
-        success_url="{}?donation={}&session_id={{CHECKOUT_SESSION_ID}}".format(
-            request.build_absolute_uri(reverse("payment-success")), donation
-        ),
+        customer=request.user.member.stripe_customer_id,
+        success_url=success_url,
         cancel_url=request.build_absolute_uri(reverse("payment-cancel")),
     )
 
@@ -83,7 +86,7 @@ def payment_setup(request):
             "session": session,
             "user": request.user,
             "donation": donation,
-            "total": donation + 1,
+            "total": int(donation) + 1,
         },
     )
 
@@ -93,27 +96,29 @@ def payment_success(request):
         return HttpResponseRedirect(reverse("register"))
 
     # todo(cn): handle no donation and session param
-    donation = int(request.GET["donation"])
+    donation = request.GET.get("donation", False)
     session_id = request.GET["session_id"]
 
     session = stripe.checkout.Session.retrieve(id=session_id, expand=["setup_intent"])
-    intent = session.setup_intent
 
-    # todo(cn): check if there is even a donation
-    donation_price = stripe.Price.create(
-        nickname="{} donation".format(donation),
-        unit_amount=donation*100,
-        currency="gbp",
-        recurring={"interval": "year"},
-        product=sand_product_id,
-    )
+    line_items = [{"price": sand_price_id}]
+    if donation:
+        price = stripe.Price.create(
+            nickname="{} donation".format(donation),
+            unit_amount=int(donation) * 100,
+            currency="gbp",
+            recurring={"interval": "year"},
+            product=sand_product_id,
+        )
+        line_items.append({"price": price.id})
 
     # todo(cn): We probably want to store the subscription id
     #           in the database
-    subscription = stripe.Subscription.create(
+    intent = session.setup_intent
+    stripe.Subscription.create(
         customer=intent.customer,
         default_payment_method=intent.payment_method,
-        items=[{"price": sand_price_id}, {"price": donation_price.id}],
+        items=line_items,
     )
 
     return HttpResponse("the payment setup was good.")

@@ -15,4 +15,4 @@ class RegistrationForm(forms.Form):
     )
     birth_date = forms.DateField(required=True, widget=DateInput)
     constitution_agreed = forms.BooleanField(required=True)
-    donation_amount = forms.DecimalField(min_value=0, decimal_places=2, required=True)
+    donation_amount = forms.DecimalField(min_value=0, decimal_places=2, required=False)

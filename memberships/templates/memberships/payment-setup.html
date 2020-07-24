@@ -2,7 +2,11 @@
 
 <h1>Setup your Geek.Zone donation</h1>
 
-<h2> You are donating £{{donation}}</h2>
+{% if donation %}
+<h2>You are donating £{{donation}}</h2>
+{% else %}
+<h2>You are not donating any extra to Geek.Zone</h2>
+{% endif %}
 <p>Your yearly cost will be £{{total}}</p>
 
 <button id="checkout-button">Setup your Direct Debit</button>
