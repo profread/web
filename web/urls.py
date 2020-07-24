@@ -27,5 +27,5 @@ def logout_view(request):
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("memberships/", include("memberships.urls")),
-    path("logout/", logout_view),
+    path("logout/", logout_view, name="logout"),
 ]

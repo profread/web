@@ -15,6 +15,9 @@ sand_product_id = "prod_HaqRM6XnWLZ6Zi"
 # note(cn): You should _not_ be able to access this
 #           if you are already logged in.
 def register(request):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("portal"))
+
     if not request.method == "POST":
         return render(
             request, "memberships/register.html", {"form": RegistrationForm()}
@@ -121,9 +124,15 @@ def payment_success(request):
         items=line_items,
     )
 
-    return HttpResponse("the payment setup was good.")
+    return HttpResponseRedirect(reverse("portal"))
 
 
 def payment_cancel(request):
     pass
 
+
+def portal(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("register"))
+
+    return render(request, "memberships/portal.html")
