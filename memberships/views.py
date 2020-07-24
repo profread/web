@@ -3,9 +3,10 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import authenticate, login
 import stripe
+import datetime
 
 from .forms import RegistrationForm
-from .models import Member
+from .models import Member, Membership
 
 stripe.api_key = "sk_test_51H10VbJh8KDe9GPFIV2e5f3H7wq21bzdvCB12CznS92vbOavET4ALTsQgNgP0Meb9VSMDuhPc1DhEu4pRw9bs0Sd00iujiazxX"
 sand_price_id = "price_1H1ekvJh8KDe9GPF5hhB57QK"
@@ -112,13 +113,16 @@ def payment_success(request):
         )
         line_items.append({"price": price.id})
 
-    # todo(cn): We probably want to store the subscription id
-    #           in the database
     intent = session.setup_intent
-    stripe.Subscription.create(
+    subscription = stripe.Subscription.create(
         customer=intent.customer,
         default_payment_method=intent.payment_method,
         items=line_items,
+    )
+    Membership.objects.create(
+        member=request.user.member,
+        start_date=datetime.datetime.now(),
+        stripe_subscription_id=subscription.id,
     )
 
     return HttpResponseRedirect(reverse("portal"))

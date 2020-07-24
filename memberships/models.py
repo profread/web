@@ -46,3 +46,11 @@ class Member(models.Model):
 
     def __str__(self):
         return self.full_name
+
+class Membership(models.Model):
+    # todo(cn): what should the on_delete be?
+    member = models.ForeignKey(Member, on_delete=models.CASCADE)
+    # todo(cn): store the membership type
+    start_date = models.DateTimeField()
+    end_date = models.DateTimeField(null=True)
+    stripe_subscription_id = models.CharField(max_length=255)
